@@ -1,0 +1,44 @@
+<% layout('/layouts/boilerplate') %>
+
+    
+
+
+    <div class="row">
+        <h1 class="text-center">edit destination</h1>
+        <div class="col-6 offset-3">
+            <form action="/destination/<%=place._id%>?_method=PUT" method='POST' novalidate class="needs-validation">
+                <div class="mb-3">
+                    <label class="form-label" for="title">title</label>
+                    <input class="form-control" type="text" id="title" name="destination[title]" value="<%=place.title  %>"  required >
+                </div> 
+                <div class=" mb-3">
+                    <label class="form-label" for="location">location</label>
+                    <input class="form-control" type="text" id="location" name="destination[location]" value="<%=place.location  %>" required  >
+                </div>
+                <div class=" mb-3">
+                    <label class="form-label" for="image">Image</label>
+                    <input class="form-control" type="text" id="image" name="destination[image]" value="<%=place.image  %>"  required >
+                </div>
+                <div class=" mb-3">
+                    <label class="form-label" for="travelcost">travel cost</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="travelcost-label">Rs</span>
+                        <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="travelcost"
+                            aria-describedby="travelcost-label" name="destination[travelcost]" value="<%=place.travelcost  %>"  required>
+                    </div>
+    
+                <div class=" mb-3">
+                        <label class="form-label" for="description">description</label>
+                        <textarea  cols="30" rows="8" <input class="form-control" type="text"
+                            id="description" name="destination[description]"  required >"<%=place.description%>" 
+                   </textarea>
+                 </div>
+                <div class=" mb-3">
+                    <button class="btn btn-primary">update destination</button>
+                </div>
+            </form>
+            <a href="/destination/<%=place._id%>">back to destination</a>
+    
+        </div>
+    </div>
+    

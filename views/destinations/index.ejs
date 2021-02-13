@@ -1,0 +1,33 @@
+<% layout('/layouts/boilerplate') %>
+  <div>
+    <a href="/destination/new">add destination</a>
+  </div>
+
+  <h2> all destination </h2>
+
+
+  <%for(let name of place){%>
+    <div class='card' mb-4>
+      <div class="row">
+        <div class="col-md-4">
+          <img class="img-fluid" src="<%=name.image  %> ">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%=name.title %>
+            </h5>
+            <p class="card-text">
+              <%=name.description %>
+            </p>
+            <p class="card-text">
+              <small class="text-muted">
+                <%=name.location %>
+              </small>
+            </p>
+            <a class="btn btn-primary" href="/destination/<%=name._id%> ">view <%=name.title  %> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }%>

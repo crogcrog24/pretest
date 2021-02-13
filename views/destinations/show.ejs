@@ -1,0 +1,59 @@
+<% layout('/layouts/boilerplate') %> 
+<div class="row">
+  <div class="col-6">
+    <div class="card mb-3" >
+        <img src="<%=place.image %>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">  <%=place.title %></h5>
+         
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%=place.location %> </li>
+          <li class="list-group-item"><%= place.travelcost%></li>
+          <li class="list-group-item">Vestibulum at eros</li>
+          <p class="card-text"><%= place.description%></p>
+        </ul>
+        <div class="card-body">
+          <a href="/destination/<%=place._id%>/edit" class="card-link btn btn-info">Edit</a>
+          <form class="d-inline card link " action="/destination/<%=place._id %>?_method=DELETE " method="POST">
+            <button class="btn btn-danger">delete</button>
+            </form>
+        </div>
+            <div class="card-footer text -muted">
+               2 days ago
+                <a href="/destination"> all destination</a>
+            </div>
+      </div>
+  </div>
+<div class="col-6">
+        <h2>leave review</h2>
+      <form action="/destination/<%=place._id%>/reviews"  method="POST"  class="mb-3 needs-validation " novalidate >
+        <div class="mb-3">
+          <label class="form-label" for="rating">Rating</label>
+          <input type="range" min='1' max="5" name="review[rating]" id="rating">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="body">Review</label>
+          <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
+        </div>
+        <button class="btn btn-success">Submit</button>
+      </form>
+      <% for(let review of place.reviews) {%> 
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="mb-3">
+                <h5 class='card-title'>Rating:<%= review.rating %></h5>
+                     <p class='card-title'>Review:<%= review.body %></p>
+                     <form class="d-inline card link " action="/destination/<%=place._id %>/reviews/<%=review._id  %>?_method=DELETE " method="POST">
+                      <button class="btn btn-sm btn-danger">delete</button>
+                      </form>
+            </div>
+            </div>
+          </div>
+        
+      <% } %> 
+</div>
+</div>
+
+    
+    
